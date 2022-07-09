@@ -1,0 +1,29 @@
+{{>layout/header}}
+
+
+<!-- 펜션 기본 값 : 룸 1 10만원 룸2 : 12만원-->
+<!--성인 1명당 1만원 어린이 한명당 5천원-->
+<form action="/reservationOK" method="post">
+    <input type="hidden" name="rId">
+    예약자명 : <input type="text" name="rUsername">
+    전화번호 : <input type="text" name="rPhone">
+    요청사항 : <textarea name="rRequired"></textarea>
+    <select name = "adultCount"> 어른 :
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+    </select>
+    <select name = "kidCount">어린이 :
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+    </select>
+    예약번호 : <input type="text" name="rNumber">
+    입금 : <input type="text" name="rDeposit">
+
+    <input type="submit" value="Go">
+</form>
+
+{{>layout/footer}}

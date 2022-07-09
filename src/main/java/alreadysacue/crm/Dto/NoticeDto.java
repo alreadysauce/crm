@@ -10,7 +10,6 @@ public class NoticeDto {
     private Long idx;
     private String title;
     private String content;
-//
 
     public Notice toEntity(){
         return new Notice(idx, title, content);
