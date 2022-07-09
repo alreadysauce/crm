@@ -4,6 +4,8 @@ import alreadysacue.crm.Repository.UserRepository;
 import alreadysacue.crm.model.User;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,8 +38,9 @@ public class IndexController {
     public String joinForm(){
         return "/Login/joinForm";
     }
+
     @PostMapping("/join")
-    public @ResponseBody String join(User user) {
+    public String join(User user) {
         log.info(user.toString());
         user.setRole("ROLE_ADMIN");
         String rawPassword = user.getPassword();
@@ -45,5 +48,20 @@ public class IndexController {
         user.setPassword(encPassword);
         userRepository.save(user);
         return "redirect:/loginForm";
+    }
+    @Secured("ROLE_ADMIN") //특정매서드에 간단하게 권한부여
+    @GetMapping("/info")
+    public @ResponseBody String info(){
+        return "개인  정보";
+    }
+    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_ADMIN')")//특정매서드에 간단하게 권한부여(2개이상)
+    @GetMapping("/data")
+    public @ResponseBody String data(){
+        return "data";
+    }
+
+    @GetMapping("/map")
+    public String map(){
+        return "/Map/map";
     }
 }

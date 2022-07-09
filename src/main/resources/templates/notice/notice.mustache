@@ -1,0 +1,22 @@
+{{>layout/header}}
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Idx</th>
+        <th>Title</th>
+        <th>Content</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{#noticeList}}
+        <tr>
+            <td>{{idx}}</td>
+            <td><a href="notice/{{idx}}">{{title}}</a></td>
+            <td>{{content}}</td>
+        </tr>
+    {{/noticeList}}
+    </tbody>
+</table>
+
+{{>layout/footer}}
