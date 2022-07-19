@@ -9,4 +9,5 @@ import java.util.ArrayList;
 public interface ReservationRepository extends JpaRepository<Reservation, Long> {
     @Override
     ArrayList<Reservation> findAll();
+
 }

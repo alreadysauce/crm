@@ -12,14 +12,15 @@ import java.sql.Timestamp;
 public class ReservationDto {
     private Long rId;
     private String rUsername;
-    private Integer rPhone;
+    private Integer rNumber;
+    private String rPhone;
     private String rRequired;
     private Integer adultCount;
     private Integer kidCount;
     private Date rDate;
     private Timestamp nowDate;
     public Reservation toEntity(){
-        return new Reservation(rId, rUsername, rPhone, rRequired, adultCount, kidCount, rDate, nowDate);
+        return new Reservation(rId, rUsername, rNumber, rPhone, rRequired, adultCount, kidCount, rDate, nowDate);
     }
 }
 

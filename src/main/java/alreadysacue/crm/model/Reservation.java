@@ -21,7 +21,9 @@ public class Reservation {
     @Column
     private String rUsername;
     @Column
-    private Integer rPhone;
+    private Integer rNumber;
+    @Column
+    private String rPhone;
     @Column
     private String rRequired;
     @Column

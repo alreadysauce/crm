@@ -1,0 +1,11 @@
+.container{
+    width: auto;
+    height: 100px;
+    margin: auto;
+}
+body{
+    background: #F9F7F8;
+}
+#side-content{
+    margin-top: 30px;
+}

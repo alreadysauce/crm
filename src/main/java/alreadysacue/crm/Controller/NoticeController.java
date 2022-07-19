@@ -2,9 +2,13 @@ package alreadysacue.crm.Controller;
 
 import alreadysacue.crm.Dto.NoticeDto;
 import alreadysacue.crm.Repository.NoticeRepository;
+import alreadysacue.crm.Service.NoticeService;
 import alreadysacue.crm.model.Notice;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,6 +24,8 @@ import java.util.List;
 public class NoticeController {
     @Autowired
     private NoticeRepository noticeRepository;
+    @Autowired
+    private NoticeService noticeService;
 
     //    write notice
     @Secured("ROLE_ADMIN")
@@ -38,7 +44,7 @@ public class NoticeController {
     }
     // List notice (Notice Main)
     @GetMapping("/notice")
-    public String notice(Model model){
+    public String notice(Model model, @PageableDefault(sort = "idx",direction = Sort.Direction.DESC) Pageable pageable){
 //        find notice
         List<Notice> noticeEntityList = noticeRepository.findAll ();
 //        send view
@@ -87,5 +93,14 @@ public class NoticeController {
             redirect.addAttribute("게시물 삭제가 완료되었습니다.");
         }
         return "redirect:/notice";
+    }
+
+    @GetMapping("/notice/search")
+    public String search(String keyword, Model model){
+        //search bar
+        List<Notice> searchList = noticeService.search(keyword);
+        model.addAttribute("searchList",searchList);
+
+        return "notice/noticeSearch";
     }
 }

@@ -27,9 +27,12 @@ public class SecurityConfig{
                 .anyRequest().permitAll()
                 .and()
                 .formLogin()
-                .loginPage("/login")
+                .loginPage("/loginForm")
                 .loginProcessingUrl("/login")//시큐리티가 낚아채서 대신 로그인해줌
                 .defaultSuccessUrl("/"); // 로그인이 완료되면
+        http.logout()
+                .logoutUrl("/logout") // 로그아웃 처리 URL
+                .logoutSuccessUrl("/"); // 로그아웃 성공 후 이동페이지
         return http.build();
     }
 }

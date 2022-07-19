@@ -18,18 +18,19 @@
     {{#reservation}}
         <tr>
             <td>{{rId}}</td>
-            <td><a href="/admin/management/{{rId}}">{{rUsername}}</a></td>
+            <td>{{rUsername}}</td>
             <td>{{rNumber}}</td>
             <td>{{rPhone}}</td>
             <td>{{rRequired}}</td>
             <td>{{adultCount}}</td>
             <td>{{kidCount}}</td>
             <td>{{nowDate}}</td>
-
         </tr>
     {{/reservation}}
     </tbody>
 </table>
-
+<button><a href="/admin/management">게시판으로 이동하기</a></button>
+<button><a href="/admin/management/{{reservation.rId}}/edit">게시글 수정하기</a></button>
+<button><a href="/admin/management/{{reservation.rId}}/delete">게시글 삭제하기</a></button>
 
 {{>layout/footer}}

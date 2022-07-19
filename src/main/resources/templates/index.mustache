@@ -1,3 +1,66 @@
 {{>layout/header}}
-<h1>인덱스 페이지</h1>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            {{>layout/nav}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12" id="main_image">
+            <img src="https://placeimg.com/1300/600/any" />
+        </div>
+    </div>
+    <div class="row" id="side-content">
+        <div class="col-sm-6">
+            <img src="https://placeimg.com/600/300/any" />
+        </div>
+        <div class="col-sm-6">
+            <h1><a href="/notice">공지사항</a></h1>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>글번호</th>
+                    <th>글제목</th>
+                    <th>글내용</th>
+                </tr>
+                </thead>
+                <tbody>
+                {{#noticeList}}
+                    <tr>
+                        <td>{{idx}}</td>
+                        <td><a href="notice/{{idx}}">{{title}}</a></td>
+                        <td>{{content}}</td>
+                    </tr>
+                {{/noticeList}}
+                </tbody>
+            </table>
+        </div>
+<!--        <div>-->
+<!--            <form action="search/search" method="get">-->
+<!--            <input type="text" name="title" placeholder="search title">-->
+<!--            <button class="btn btn-secondary">검색</button>-->
+<!--            </form>-->
+<!--        </div>-->
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <footer class="py-5 bg-blue mt-auto" style="text-align: right">
+                <hr>
+                <p>상호 : 풀스택펜션 | 대표자 : 손재학 | 소재지 : 경북 경산시 하양읍 하양로 13-13</p>
+                <p>사업자 등록번호 : 000-0000-0000</p>
+                <p>문의</p>
+                <p>펜션 이메일 : alreadysauce@gmail.com</p>
+                <p>펜션 전화번호 : 000-000-0000</p>
+                <a href="/loginForm">관리자 로그인</a>
+            </footer>
+        </div>
+    </div>
+</div>
 {{>layout/footer}}

@@ -9,22 +9,22 @@
     </tr>
     </thead>
     <tbody>
-    {{#noticeList}}
+    {{#searchList}}
         <tr>
             <td>{{idx}}</td>
             <td><a href="notice/{{idx}}">{{title}}</a></td>
             <td>{{content}}</td>
         </tr>
-    {{/noticeList}}
+    {{/searchList}}
     </tbody>
 </table>
 <div>
     <form action="/notice/search" method="GET">
-        <div class="btn-group" role="group" aria-label="Basic example">
-            <input name="keyword" type="text" placeholder="검색어를 입력해주세요">
-            <button class="btn btn-secondary">검색</button>
-        </div>
-    </form>
+    <div class="btn-group" role="group" aria-label="Basic example">
+        <input name="keyword" type="text" placeholder="검색어를 입력해주세요">
+        <button class="btn btn-secondary">검색</button>
+    </div>
+</form>
 </div>
 <button><a href="/notice/write">글쓰러가기</a></button>
 

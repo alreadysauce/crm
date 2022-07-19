@@ -1,0 +1,41 @@
+{{>layout/header}}
+
+{{#reservation}}
+    <form class="container" action="/admin/management/update" method="POST">
+        <div class="mb-3">
+            <input type="hidden" name="idx" value="{{rId}}">
+            <label class="form-label">rUsername</label>
+            <input type="text" class="form-control" name="rUsername" value="{{rUsername}}">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">rNumber</label>
+            <textarea class="form-control" rows="3" name="rNumber">{{rNumber}}</textarea>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">rPhone</label>
+            <textarea class="form-control" rows="3" name="rPhone">{{rPhone}}</textarea>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">rRequired</label>
+            <textarea class="form-control" rows="3" name="rRequired">{{rRequired}}</textarea>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">adultCount</label>
+            <textarea class="form-control" rows="3" name="adultCount">{{adultCount}}</textarea>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">kidCount</label>
+            <textarea class="form-control" rows="3" name="kidCount">{{kidCount}}</textarea>
+        </div>
+
+        </div>  <div class="mb-3">
+        <label class="form-label">nowDate</label>
+        <textarea class="form-control" rows="3" name="nowDate">{{nowDate}}</textarea>
+    </div>
+
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <a href="/admin/management/{{rId}}">Back</a>
+    </form>
+{{/reservation}}
+{{>layout/footer}}

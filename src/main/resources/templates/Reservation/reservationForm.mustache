@@ -3,27 +3,45 @@
 
 <!-- 펜션 기본 값 : 룸 1 10만원 룸2 : 12만원-->
 <!--성인 1명당 1만원 어린이 한명당 5천원-->
-<form action="/reservationOK" method="post">
+<form action="/reservationOK" method="post" id="form">
     <input type="hidden" name="rId">
     예약자명 : <input type="text" name="rUsername">
-    전화번호 : <input type="text" name="rPhone">
+    꼭 전화번호는 000-0000-0000 로 입력부탁드릴께요오오
+    전화번호 : <input type="tel" name="rPhone" pattern="[0-9]{2,3}-[0-9]{3,4}-[0-9]{3,4}" maxlength="13">
     요청사항 : <textarea name="rRequired"></textarea>
-    <select name = "adultCount"> 어른 :
+    <select name = "room" id= "room">room :
+        <option value="100000">1층</option>
+        <option value="200000">2층</option>
+    </select>
+    <select name = "adultCount" id="ac"> 어른 :
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
         <option value="4">4</option>
     </select>
-    <select name = "kidCount">어린이 :
+    <select name = "kidCount" id="kc">어린이 :
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
         <option value="4">4</option>
     </select>
-    예약번호 : <input type="text" name="rNumber">
+    비밀번호 : <input type="text" name="rNumber">
     입금 : <input type="text" name="rDeposit">
 
+    <a id="total_price"></a>
     <input type="submit" value="Go">
 </form>
+<script>
+    function add(){
+    let room = document.getElementById('room').value
+    let ac = document.getElementById('ac').value
+    let kc = document.getElementById('kc').value
 
+    let total_ac = 15000*ac
+    let total_kc = 10000*kc
+    let total_price = room + total_ac + total_kc
+
+    document.getElementById("total_price").value = total_price
+    }
+</script>
 {{>layout/footer}}
