@@ -33,28 +33,13 @@ public class IndexController {
     @Autowired
     private NoticeService noticeService;
 
-//    @GetMapping("/")
-//    public String index(Model model, @PageableDefault(sort = "idx", direction = Sort.Direction.DESC)Pageable pageable){
-//        List<Notice> noticeEntityList = noticeRepository.findAll ();
-////        send view
-//        model.addAttribute("noticeList", noticeEntityList);
-////        model.addAttribute("posts", NoticeService.pageList(pageable));
-//        return "index";
-//    }
-
     @GetMapping("/")
-    public String index(Model model){
-        List<Notice> noticeEntityList = noticeRepository.findAll ();
-//        send view
-        model.addAttribute("noticeList", noticeEntityList);
-        return "index";
-    }
-
-    @GetMapping("/test")
-    public String index_testPage(String title, Model model, @PageableDefault(size = 5,sort = "idx",direction = Sort.Direction.DESC)Pageable pageable){
+    public String index(Model model, @PageableDefault(size = 5,sort = "idx",direction = Sort.Direction.DESC) Pageable pageable){
+//        List<Notice> noticeEntityList = noticeRepository.findAll ();
         model.addAttribute("boardList", noticeService.getNoticeList(pageable));
-
-        return "index";
+//        send view
+//        model.addAttribute("noticeList", noticeEntityList);
+        return "Index/index";
     }
 
     @GetMapping("/admin")

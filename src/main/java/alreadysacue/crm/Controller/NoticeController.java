@@ -6,6 +6,7 @@ import alreadysacue.crm.Service.NoticeService;
 import alreadysacue.crm.model.Notice;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
@@ -43,12 +44,13 @@ public class NoticeController {
         return "redirect:/notice/" + saved.getIdx();
     }
     // List notice (Notice Main)
+
     @GetMapping("/notice")
-    public String notice(Model model, @PageableDefault(sort = "idx",direction = Sort.Direction.DESC) Pageable pageable){
-//        find notice
-        List<Notice> noticeEntityList = noticeRepository.findAll ();
-//        send view
-        model.addAttribute("noticeList", noticeEntityList);
+    public String notice(Model model, @PageableDefault(size = 10,sort = "idx",direction = Sort.Direction.DESC) Pageable pageable){
+        model.addAttribute("boardList", noticeService.getNoticeList(pageable));
+        model.addAttribute("previous", pageable.previousOrFirst().getPageNumber());
+        model.addAttribute("next", pageable.next().getPageNumber());
+        model.addAttribute("check", noticeService.getListCheck(pageable));
         return "notice/notice";
     }
 
@@ -96,9 +98,9 @@ public class NoticeController {
     }
 
     @GetMapping("/notice/search")
-    public String search(String keyword, Model model){
+    public String search(String keyword, Model model, Pageable pageable){
         //search bar
-        List<Notice> searchList = noticeService.search(keyword);
+        Page<Notice> searchList = noticeService.search(keyword, pageable);
         model.addAttribute("searchList",searchList);
 
         return "notice/noticeSearch";

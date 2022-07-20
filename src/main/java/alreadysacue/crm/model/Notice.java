@@ -1,17 +1,13 @@
 package alreadysacue.crm.model;
 
-import alreadysacue.crm.Repository.NoticeRepository;
 import lombok.*;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import javax.transaction.Transactional;
-import java.sql.Timestamp;
-import java.util.List;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 
 @Entity
 @AllArgsConstructor
@@ -19,7 +15,7 @@ import java.util.List;
 @ToString
 @Getter
 @Data
-public class Notice{
+public class Notice extends baseTime{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idx;
@@ -28,5 +24,6 @@ public class Notice{
     @Column
     private String content;
     @Column
-    private Timestamp timestamp;
+    private String writer;
+
 }

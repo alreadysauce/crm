@@ -22,7 +22,8 @@
             <img src="https://placeimg.com/600/300/any" />
         </div>
         <div class="col-sm-6">
-            <h1><a href="/notice">공지사항</a></h1>
+            <h1>공지사항</h1>
+            <button><a href="/notice">더보기</a></button>
             <table class="table">
                 <thead>
                 <tr>
@@ -32,22 +33,16 @@
                 </tr>
                 </thead>
                 <tbody>
-                {{#noticeList}}
+                {{#boardList}}
                     <tr>
                         <td>{{idx}}</td>
                         <td><a href="notice/{{idx}}">{{title}}</a></td>
                         <td>{{content}}</td>
                     </tr>
-                {{/noticeList}}
+                {{/boardList}}
                 </tbody>
             </table>
         </div>
-<!--        <div>-->
-<!--            <form action="search/search" method="get">-->
-<!--            <input type="text" name="title" placeholder="search title">-->
-<!--            <button class="btn btn-secondary">검색</button>-->
-<!--            </form>-->
-<!--        </div>-->
     </div>
     <div class="row">
         <div class="col-sm-12">

@@ -3,11 +3,9 @@
 <table class="table">
     <thead>
     <tr>
-        <th>글번호</th>
-        <th>글제목</th>
-        <th>글 내용</th>
-        <th>작성자</th>
-        <th>작성 일자</th>
+        <th>Idx</th>
+        <th>Title</th>
+        <th>Content</th>
     </tr>
     </thead>
     <tbody>
@@ -16,13 +14,10 @@
             <td>{{idx}}</td>
             <td><a href="notice/{{idx}}">{{title}}</a></td>
             <td>{{content}}</td>
-            <td>{{writer}}</td>
-            <td>{{createdDate}}</td>
         </tr>
     {{/boardList}}
     </tbody>
 </table>
-
 <div>
     <ul class="pagination justify-content-center">
         <li class="page-item"><a class="page-link" href="?page={{previous}}">Previous</a></li>

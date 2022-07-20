@@ -21,14 +21,21 @@ public class NoticeService {
     NoticeRepository noticeRepository;
 
     @Transactional
-    public List<Notice> search(String keyword){
-        List<Notice> noticeList = noticeRepository.findByTitleContaining(keyword);
+    public Page<Notice> search(String keyword,Pageable pageable){
+        Page<Notice> noticeList = noticeRepository.findByTitleContaining(keyword, pageable);
         return noticeList;
     }
 
     @Transactional
     public Page<Notice> getNoticeList(Pageable pageable){
         return noticeRepository.findAll(pageable);
+    }
+    @Transactional
+    public Boolean getListCheck(Pageable pageable) {
+        Page<Notice> saved = getNoticeList(pageable);
+        Boolean check = saved.hasNext();
+
+        return check;
     }
 
 }
