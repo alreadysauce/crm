@@ -1,40 +1,55 @@
 {{>layout/header}}
 
-<table class="table">
-    <thead>
-    <tr>
-        <th>글번호</th>
-        <th>글제목</th>
-        <th>글 내용</th>
-        <th>작성자</th>
-        <th>작성 일자</th>
-    </tr>
-    </thead>
-    <tbody>
-    {{#boardList}}
-        <tr>
-            <td>{{idx}}</td>
-            <td><a href="notice/{{idx}}">{{title}}</a></td>
-            <td>{{content}}</td>
-            <td>{{writer}}</td>
-            <td>{{createdDate}}</td>
-        </tr>
-    {{/boardList}}
-    </tbody>
-</table>
 
-<div>
-    <ul class="pagination justify-content-center">
-        <li class="page-item"><a class="page-link" href="?page={{previous}}">Previous</a></li>
-        {{#check}}
-            <li class="page-item"><a class="page-link" href="?page={{next}}">Next</a></li>
-        {{/check}}
-        {{^check}}
-            <li class="page-item disabled"><a class="page-link" href="?page={{next}}">Next</a></li>
-        {{/check}}
-    </ul>
-</div>
-{{>notice/noticeSearchBar}}
-<button><a href="/notice/write">글쓰러가기</a></button>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+    <table class="table">
+        <thead>
+        <tr>
+            <th>글번호</th>
+            <th>글제목</th>
+            <th>글 내용</th>
+            <th>작성자</th>
+            <th>작성 일자</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#boardList}}
+            <tr>
+                <td>{{idx}}</td>
+                <td><a href="notice/{{idx}}">{{title}}</a></td>
+                <td>{{content}}</td>
+                <td>{{writer}}</td>
+                <td>{{createdDate}}</td>
+            </tr>
+        {{/boardList}}
+        </tbody>
+    </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+        <ul class="pagination justify-content-center">
+            <li class="page-item"><a class="page-link" href="?page={{previous}}">Previous</a></li>
+            {{#check}}
+                <li class="page-item"><a class="page-link" href="?page={{next}}">Next</a></li>
+            {{/check}}
+            {{^check}}
+                <li class="page-item disabled"><a class="page-link" href="?page={{next}}">Next</a></li>
+            {{/check}}
+        </ul>
+            {{>notice/noticeSearchBar}}
+            <button><a href="/notice/write">글쓰러가기</a></button>
+    </div>
+    </div>
+    </div>
+
+
 
 {{>layout/footer}}

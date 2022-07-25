@@ -22,12 +22,17 @@ public class OtherController {
         return "/Calendar/calendar";
         }
 
-    @GetMapping("/test/nt")
-    public String index_testPage(Model model, @PageableDefault(size = 5,sort = "idx",direction = Sort.Direction.DESC) Pageable pageable){
-        model.addAttribute("boardList", noticeService.getNoticeList(pageable));
-        model.addAttribute("previous", pageable.previousOrFirst().getPageNumber());
-        model.addAttribute("next", pageable.next().getPageNumber());
-        model.addAttribute("check", noticeService.getListCheck(pageable));
-        return "test/nt";
+//    @GetMapping("/test/nt")
+//    public String index_testPage(Model model, @PageableDefault(size = 5,sort = "idx",direction = Sort.Direction.DESC) Pageable pageable){
+//        model.addAttribute("boardList", noticeService.getNoticeList(pageable));
+//        model.addAttribute("previous", pageable.previousOrFirst().getPageNumber());
+//        model.addAttribute("next", pageable.next().getPageNumber());
+//        model.addAttribute("check", noticeService.getListCheck(pageable));
+//        return "test/nt";
+//    }
+
+    @GetMapping("/test")
+    public String testIndex(){
+        return "testTemplate/testIndex";
     }
 }
